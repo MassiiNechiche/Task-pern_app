@@ -11,7 +11,8 @@ function InputTodo() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),
       });
-      console.log(response);
+      setDescription("");
+      window.location = "/";
     } catch (error) {
       console.log(error);
     }
