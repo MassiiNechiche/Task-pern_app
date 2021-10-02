@@ -1,18 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 
-function EditTodo() {
+function EditTodo({ todo }) {
+  const [description, setDescription] = useState(todo.description);
+
   return (
     <>
       <button
         type="button"
         class="btn btn-warning"
         data-toggle="modal"
-        data-target="#myModal"
+        data-target={`#id${todo.todo_id}`}
       >
         Edit
       </button>
 
-      <div class="modal" id="myModal">
+      <div class="modal" id={`id${todo.todo_id}`}>
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
@@ -23,7 +25,7 @@ function EditTodo() {
             </div>
 
             <div class="modal-body">
-              <input type="text" className="form-control" />
+              <input type="text" className="form-control" value={description} />
             </div>
 
             <div class="modal-footer">
