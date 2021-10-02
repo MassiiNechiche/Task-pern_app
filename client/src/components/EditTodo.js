@@ -3,6 +3,24 @@ import React, { useState } from "react";
 function EditTodo({ todo }) {
   const [description, setDescription] = useState(todo.description);
 
+  const updateDescription = async (e) => {
+    e.preventDefault();
+    try {
+      const body = { description };
+      const reponse = await fetch(
+        `http://localhost:5000/todos/${todo.todo_id}`,
+        {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(body),
+        }
+      );
+      window.location = "/";
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
   return (
     <>
       <button
@@ -25,7 +43,12 @@ function EditTodo({ todo }) {
             </div>
 
             <div class="modal-body">
-              <input type="text" className="form-control" value={description} />
+              <input
+                type="text"
+                className="form-control"
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+              />
             </div>
 
             <div class="modal-footer">
@@ -33,6 +56,7 @@ function EditTodo({ todo }) {
                 type="button"
                 class="btn btn-warning"
                 data-dismiss="modal"
+                onClick={(e) => updateDescription(e)}
               >
                 Edit
               </button>
