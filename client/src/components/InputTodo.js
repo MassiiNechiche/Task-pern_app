@@ -27,6 +27,7 @@ function InputTodo() {
           className="form-control"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
+          placeholder="task"
         />
         <button className="btn btn-success ">Add</button>
       </form>

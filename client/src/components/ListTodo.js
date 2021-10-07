@@ -30,9 +30,9 @@ function ListTodo() {
   };
 
   return (
-    <div class="container">
+    <div class="container mt-5">
       <table class="table">
-        <thead>
+        <thead class="thead-dark">
           <tr>
             <th>Description</th>
             <th>Edit</th>
@@ -42,7 +42,7 @@ function ListTodo() {
         <tbody>
           {todos.map((todo) => (
             <tr key={todo.todo_id}>
-              <td>{todo.description}</td>
+              <td className="h4">{todo.description}</td>
               <td>
                 <EditTodo todo={todo} />
               </td>
